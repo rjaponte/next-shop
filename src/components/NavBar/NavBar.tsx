@@ -30,7 +30,7 @@ type NavBarProps = defaultProps & {
 }
 
 const NavBar: React.FC<NavBarProps> = ({ history, selected }) => {
-  const navChangeHandler = (event, value: number) => {
+  const navChangeHandler = (event: React.ChangeEvent<{}>, value: number) => {
     const category = getCategoryById(value);
     if(!category) return;
     history.push(`/category/${category.name.toLowerCase()}`);

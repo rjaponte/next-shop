@@ -15,7 +15,7 @@
  */
 
 import React from 'react';
-import { Link, RouteComponentProps } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import Drawer from '@material-ui/core/Drawer';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
@@ -25,9 +25,10 @@ import './menu-drawer.css';
 import { categories } from '../../../utils/links';
 import {Category} from '../../../models';
 
-type MenuDrawerProps = RouteComponentProps & {
+type MenuDrawerProps = {
+  open: boolean,
   close: () => void,
-  selected: Category
+  selected?: Category
 };
 
 const MenuDrawer: React.FC<MenuDrawerProps> = ({ close, selected, ...rest }) => (
@@ -43,7 +44,7 @@ const MenuDrawer: React.FC<MenuDrawerProps> = ({ close, selected, ...rest }) => 
           <Link to={`/category/${category.name.toLowerCase()}`} className='drawer-list-item' key={category.id}>
             <ListItem
               button
-              selected={selected.name === category.name}>
+              selected={selected?.name === category.name}>
               <ListItemText secondary={category.name} />
             </ListItem>
           </Link>
