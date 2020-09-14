@@ -32,11 +32,20 @@ ci:
       font-display:
         - error
         - minScore: 0
+      first-cpu-idle:
+        - error
+        - minScore: 0.5
+      first-meaningful-paint:
+        - error
+        - minScore: 0.5
+      largest-contentful-paint:
+        - error
+        - minScore: 0.5
       first-contentful-paint:
         - error
         - maxNumericValue: 3000
           aggregationMethod: optimistic
       interactive:
         - error
-        - maxNumericValue: 5000
+        - maxNumericValue: 6000
           aggregationMethod: optimistic
