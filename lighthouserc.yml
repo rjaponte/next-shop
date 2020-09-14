@@ -34,13 +34,13 @@ ci:
         - minScore: 0
       first-cpu-idle:
         - error
-        - minScore: 0.5
+        - minScore: 0
       first-meaningful-paint:
         - error
-        - minScore: 0.5
+        - minScore: 0
       largest-contentful-paint:
         - error
-        - minScore: 0.5
+        - minScore: 0
       first-contentful-paint:
         - error
         - maxNumericValue: 3000
