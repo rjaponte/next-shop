@@ -15,24 +15,31 @@
  */
 
 import React from 'react';
-import { withRouter } from 'react-router-dom';
+import { RouteComponentProps, withRouter } from 'react-router-dom';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 
 import { categories } from '../../utils/links';
 import { getCategoryById } from '../../utils/utilities';
 import './nav-bar.css';
+import {Category} from '../../models';
 
-const NavBar = ({ history, selected }) => {
-  const navChangeHandler = (event, value) => {
+type defaultProps = RouteComponentProps;
+type NavBarProps = defaultProps & {
+  selected?: Category
+}
+
+const NavBar: React.FC<NavBarProps> = ({ history, selected }) => {
+  const navChangeHandler = (event, value: number) => {
     const category = getCategoryById(value);
+    if(!category) return;
     history.push(`/category/${category.name.toLowerCase()}`);
   };
 
   return (
     <Tabs
       className='nav-bar'
-      value={selected.id}
+      value={selected?.id}
       onChange={navChangeHandler}
       scrollButtons='auto'>
       { categories.map(category => (

@@ -14,16 +14,22 @@
  * limitations under the License.
  */
 
-import React, { Fragment } from 'react';
+import { useEffect, ReactNode } from 'react';
+import { withRouter, useLocation } from 'react-router-dom';
 
-import FeaturedProduct from '../../../components/FeaturedProduct/FeaturedProduct';
-import ProductCardList from '../../../components/ProductCardList/ProductCardList';
+interface ScrollToTopProps {
+  children: ReactNode
+}
 
-const CategoryProducts = ({ selected }) => (
-  <Fragment>
-    <FeaturedProduct product={selected.featuredProduct} />
-    <ProductCardList category={selected} />
-  </Fragment>
-);
+const ScrollToTop = ({ children }:any) => {
+  const {pathname} = useLocation();
+  useEffect(() => {
+    return () => {
+      window.scrollTo(0, 0);
+    };
+  }, [pathname]);
 
-export default CategoryProducts;
+  return children;
+};
+
+export default withRouter(ScrollToTop);

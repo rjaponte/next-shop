@@ -1,0 +1,15 @@
+{
+  "compilerOptions": {
+    "target": "es5",
+    "module": "commonjs",
+    "strict": true,
+    "baseUrl": "src",
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "jsx":"react",
+    "forceConsistentCasingInFileNames": true
+  },
+  "files":[
+    "types.d.ts"
+  ]
+}

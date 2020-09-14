@@ -16,7 +16,7 @@
 
 import React, { useEffect, lazy, Suspense, Fragment } from 'react';
 import { Route, withRouter } from 'react-router-dom';
-import quicklink from 'quicklink/dist/quicklink.mjs';
+import * as quicklink from 'quicklink/dist/quicklink';
 
 import './App.css';
 
@@ -26,7 +26,7 @@ const LazySaleProducts = lazy(() => import(/* webpackChunkName: "sale-products" 
 const App = ({ location }) => {
   useEffect(() => {
     console.log('[App] quicklink call');
-    quicklink();
+    quicklink.listen();
   }, [location.pathname]);
 
   return (

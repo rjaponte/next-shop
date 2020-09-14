@@ -14,20 +14,18 @@
  * limitations under the License.
  */
 
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { Fragment } from 'react';
 
-import './logo.css';
-import logo from '../../assets/images/logo.svg';
-import logoWithIcon from '../../assets/images/logo-with-icon.svg';
+import FeaturedProduct from '../../../components/FeaturedProduct/FeaturedProduct';
+import ProductCardList from '../../../components/ProductCardList/ProductCardList';
+import {Category} from '../../../models';
 
-const Logo = () => (
-  <div className='logo'>
-    <Link to='/'>
-      <img src={logo} alt='logo' className='small' />
-      <img src={logoWithIcon} alt='logo' className='large' />
-    </Link>
-  </div>
+
+const CategoryProducts: React.FC<{selected: Category}> = ({ selected }) => (
+  <Fragment>
+    <FeaturedProduct product={selected.featuredProduct} />
+    <ProductCardList category={selected} />
+  </Fragment>
 );
 
-export default Logo;
+export default CategoryProducts;

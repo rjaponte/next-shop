@@ -14,17 +14,21 @@
  * limitations under the License.
  */
 
-import { useEffect } from 'react';
-import { withRouter } from 'react-router';
+// TODO: improve the modularity in using this component
+import React from 'react';
+import Typography from '@material-ui/core/Typography';
 
-const ScrollToTop = ({ location, children }) => {
-  useEffect(() => {
-    return () => {
-      window.scrollTo(0, 0);
-    };
-  }, [location.pathname]);
+import './abril-text.css';
 
-  return children;
-};
+type AbrilTextProps = {
+  text: string,
+  className: string
+}
 
-export default withRouter(ScrollToTop);
+const AbrilText: React.FC<AbrilTextProps> = ({ text, className, ...rest }) => (
+  <Typography className={`abril-font ${className}`} {...rest}>
+    {text}
+  </Typography>
+);
+
+export default AbrilText;

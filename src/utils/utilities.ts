@@ -14,9 +14,9 @@
  * limitations under the License.
  */
 
-import { categories } from './links';
+import {categories} from './links';
 
-const getCategoryByName = name => {
+const getCategoryByName = (name: string) => {
   if (name) {
     return categories.find(category => category.name.toLowerCase() === name.toLowerCase());
   } else {
@@ -24,14 +24,14 @@ const getCategoryByName = name => {
   }
 };
 
-const getCategoryById = id => {
+const getCategoryById = (id: number) => {
   return categories.find(category => category.id.toString() === id.toString());
 };
 
-const getDetailedProduct = (category, id) => {
+const getDetailedProduct = (category: string, id: number) => {
   const categoryDetails = getCategoryByName(category);
-  const detailedProduct = categoryDetails.products.find(product => product.id.toString() === id);
+  const detailedProduct = categoryDetails?.products.find(product => product.id === id);
   return detailedProduct;
 };
 
-export { getCategoryByName, getCategoryById, getDetailedProduct };
+export {getCategoryByName, getCategoryById, getDetailedProduct};

@@ -15,20 +15,29 @@
  */
 
 import React, { useState, useEffect } from 'react';
+import { RouteComponentProps } from 'react-router';
 
 import MenuBar from '../../components/MenuBar/MenuBar';
 import NavBar from '../../components/NavBar/NavBar';
 import CategoryProducts from './CategoryProducts/CategoryProducts';
 import { categories } from '../../utils/links';
+import {Category} from "../../models";
 import { getCategoryByName } from '../../utils/utilities';
 import './landing.css';
 
-const Landing = ({ match }) => {
-  const [selectedCategory, setSelectedCategory] = useState(categories[0]);
+type LandingParams = {
+  categoryName: string
+};
+
+type LandingProps = RouteComponentProps<LandingParams>;
+
+const Landing: React.FC<LandingProps> = ({ match }) => {
+  const [selectedCategory, setSelectedCategory] = useState<Category>(categories[0]);
 
   useEffect(() => {
     const categoryName = match.params.categoryName;
     const category = getCategoryByName(categoryName);
+    if(!category)return;
     setSelectedCategory(category);
   }, [match.params.categoryName]);
 

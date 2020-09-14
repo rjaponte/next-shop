@@ -14,16 +14,25 @@
  * limitations under the License.
  */
 
-// TODO: improve the modularity in using this component
 import React from 'react';
-import Typography from '@material-ui/core/Typography';
+import Grid from '@material-ui/core/Grid';
 
-import './abril-text.css';
+import ProductCard from './ProductCard/ProductCard';
+import './product-card-list.css';
+import {Category} from '../../models';
 
-const AbrilText = ({ text, className, ...rest }) => (
-  <Typography className={`abril-font ${className}`} {...rest}>
-    {text}
-  </Typography>
+interface ProductCardProps {
+  category: Category
+}
+
+const ProductCardList: React.FC<ProductCardProps> = ({ category }) => (
+  <Grid container className='product-card-list' justify='center'>
+    {category.products.map(product => (
+      <Grid key={product.id} item xs={12} sm={6} md={4}>
+        <ProductCard product={product} categoryName={category.name} />
+      </Grid>
+    ))}
+  </Grid>
 );
 
-export default AbrilText;
+export default ProductCardList;

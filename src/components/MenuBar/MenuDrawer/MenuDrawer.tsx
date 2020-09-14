@@ -15,7 +15,7 @@
  */
 
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, RouteComponentProps } from 'react-router-dom';
 import Drawer from '@material-ui/core/Drawer';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
@@ -23,8 +23,14 @@ import ListItemText from '@material-ui/core/ListItemText';
 
 import './menu-drawer.css';
 import { categories } from '../../../utils/links';
+import {Category} from '../../../models';
 
-const MenuDrawer = ({ close, selected, ...rest }) => (
+type MenuDrawerProps = RouteComponentProps & {
+  close: () => void,
+  selected: Category
+};
+
+const MenuDrawer: React.FC<MenuDrawerProps> = ({ close, selected, ...rest }) => (
   <Drawer onClose={close} {...rest}>
     <div
       tabIndex={0}

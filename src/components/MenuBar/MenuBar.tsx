@@ -15,7 +15,7 @@
  */
 
 import React, { Fragment, useState } from 'react';
-import { withRouter } from 'react-router-dom';
+import { RouteComponentProps, withRouter } from 'react-router-dom';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import IconButton from '@material-ui/core/IconButton';
@@ -27,11 +27,19 @@ import MenuIcon from '@material-ui/icons/Menu';
 import Logo from '../Logo/Logo';
 import MenuDrawer from './MenuDrawer/MenuDrawer';
 import './menu-bar.css';
+import {Category} from '../../models';
 
-const MenuBar = ({ history, isArrowBackVisible, selected }) => {
+type defaultProps = RouteComponentProps;
+
+type MenuBarProps = defaultProps & {
+  isArrowBackVisible?: boolean,
+  selected?: Category
+}
+
+const MenuBar: React.FC<MenuBarProps> = ({ history, isArrowBackVisible, selected }) => {
   const [isDrawerOpen, setDrawerStatus] = useState(false);
 
-  const toggleDrawerHandler = flag => {
+  const toggleDrawerHandler = (flag: boolean) => {
     setDrawerStatus(flag);
   };
 
@@ -42,7 +50,7 @@ const MenuBar = ({ history, isArrowBackVisible, selected }) => {
           { isArrowBackVisible ? (
             <IconButton className='drawer-back' color='inherit' aria-label='Menu' onClick={() => history.goBack()} >
               <ArrowBack />
-            </IconButton>  
+            </IconButton>
           ) : (
             <IconButton className='drawer-menu' color='inherit' aria-label='Menu' onClick={() => toggleDrawerHandler(true)}>
               <MenuIcon />

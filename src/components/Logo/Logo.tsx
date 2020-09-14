@@ -15,19 +15,19 @@
  */
 
 import React from 'react';
-import Grid from '@material-ui/core/Grid';
+import { Link } from 'react-router-dom';
 
-import ProductCard from './ProductCard/ProductCard';
-import './product-card-list.css';
+import './logo.css';
+const logo = require('../../assets/images/logo.svg') as string;
+const logoWithIcon = require('../../assets/images/logo-with-icon.svg') as string;
 
-const ProductCardList = ({ category }) => (
-  <Grid container className='product-card-list' justify='center'>
-    {category.products.map(product => (
-      <Grid key={product.id} item xs={12} sm={6} md={4}>
-        <ProductCard product={product} categoryName={category.name} />
-      </Grid>
-    ))}
-  </Grid>
+const Logo = () => (
+  <div className='logo'>
+    <Link to='/'>
+      <img src={logo} alt='logo' className='small' />
+      <img src={logoWithIcon} alt='logo' className='large' />
+    </Link>
+  </div>
 );
 
-export default ProductCardList;
+export default Logo;
