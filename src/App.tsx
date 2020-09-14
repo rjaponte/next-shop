@@ -15,18 +15,18 @@
  */
 
 import React, { useEffect, lazy, Suspense, Fragment } from 'react';
-import { Route, withRouter } from 'react-router-dom';
-import quicklink from 'quicklink/dist/quicklink.mjs';
+import { Route, withRouter, RouteComponentProps } from 'react-router-dom';
+import * as quicklink from 'quicklink/dist/quicklink';
 
 import './App.css';
 
 const LazyLanding = lazy(() => import(/* webpackChunkName: "landing" */ './containers/Landing/Landing'));
 const LazySaleProducts = lazy(() => import(/* webpackChunkName: "sale-products" */ './containers/SaleProducts/SaleProducts'));
 
-const App = ({ location }) => {
+const App: React.FC<RouteComponentProps> = ({ location }) => {
   useEffect(() => {
     console.log('[App] quicklink call');
-    quicklink();
+    quicklink.listen();
   }, [location.pathname]);
 
   return (

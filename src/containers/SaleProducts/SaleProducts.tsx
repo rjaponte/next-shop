@@ -17,21 +17,31 @@
 import React, { useState, useEffect, Fragment } from 'react';
 import Grid from '@material-ui/core/Grid';
 
+import { RouteComponentProps } from 'react-router';
+
 import ProductSummary from './ProductSummary/ProductSummary';
 import ProductImage from '../../components/ProductImage/ProductImage';
 import MenuBar from '../../components/MenuBar/MenuBar';
 import { getCategoryByName, getDetailedProduct } from '../../utils/utilities';
 import './sale-products.css';
 import ProductSmallCardList from '../../components/ProductSmallCardList/ProductSmallCardList';
+import {Category, Product} from '../../models';
 
-const SaleProducts = ({ match }) => {
-  const [selectedCategory, setSelectedCategory] = useState(null);
-  const [selectedProduct, setSelectedProduct] = useState(null);
+interface SaleProductsParams {
+  categoryName: string,
+  productId: string
+}
+
+type SaleProductsProps = RouteComponentProps<SaleProductsParams>;
+
+const SaleProducts: React.FC<SaleProductsProps> = ({ match }) => {
+  const [selectedCategory, setSelectedCategory] = useState<Category>(null);
+  const [selectedProduct, setSelectedProduct] = useState<Product>(null);
   const [isProductImageOpen, setProductImageStatus] = useState(false);
 
   useEffect(() => {
     const categoryName = match.params.categoryName;
-    const productId = match.params.productId;
+    const productId = parseInt(match.params.productId);
     const category = getCategoryByName(categoryName);
     setSelectedCategory(category);
     setSelectedProduct(getDetailedProduct(categoryName, productId));
@@ -44,7 +54,7 @@ const SaleProducts = ({ match }) => {
   const productDisplay = !isProductImageOpen ?
     <ProductSummary product={selectedProduct} openDetailViewer={() => setProductImageStatus(true)} /> :
     <ProductImage product={selectedProduct} close={() => setProductImageStatus(false)} />;
-  
+
   return (
     <div className='product-view-wrapper'>
       <MenuBar selected={selectedCategory} isArrowBackVisible={true} />

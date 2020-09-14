@@ -23,8 +23,15 @@ import ListItemText from '@material-ui/core/ListItemText';
 
 import './menu-drawer.css';
 import { categories } from '../../../utils/links';
+import {Category} from '../../../models';
 
-const MenuDrawer = ({ close, selected, ...rest }) => (
+type MenuDrawerProps = {
+  open: boolean,
+  close: () => void,
+  selected?: Category
+};
+
+const MenuDrawer: React.FC<MenuDrawerProps> = ({ close, selected, ...rest }) => (
   <Drawer onClose={close} {...rest}>
     <div
       tabIndex={0}
@@ -37,7 +44,7 @@ const MenuDrawer = ({ close, selected, ...rest }) => (
           <Link to={`/category/${category.name.toLowerCase()}`} className='drawer-list-item' key={category.id}>
             <ListItem
               button
-              selected={selected.name === category.name}>
+              selected={selected?.name === category.name}>
               <ListItemText secondary={category.name} />
             </ListItem>
           </Link>

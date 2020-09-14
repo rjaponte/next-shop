@@ -20,8 +20,15 @@ import Paper from '@material-ui/core/Paper';
 
 import AbrilText from '../../AbrilText/AbrilText';
 import './product-card.css';
+import {Product} from '../../../models';
 
-const ProductCard = ({ product, categoryName, smallSize }) => (
+interface ProductCardProps {
+  product: Product,
+  categoryName: string,
+  smallSize?: boolean
+}
+
+const ProductCard: React.FC<ProductCardProps> = ({ product, categoryName, smallSize }) => (
   <div className='product-card-wrapper'>
     <Link to={`/category/${categoryName.toLowerCase()}/${product.id}`}>
       <Paper square className='product-card' elevation={0}>

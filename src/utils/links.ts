@@ -13,8 +13,9 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+import {Category} from '../models'
 
-const categories = [
+const categories: Category[] = [
   {
     id: 1,
     name: 'Feature',
@@ -302,4 +303,4 @@ const categories = [
   }
 ];
 
-export { categories };
+export {categories};

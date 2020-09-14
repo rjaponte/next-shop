@@ -20,7 +20,9 @@ import Grid from '@material-ui/core/Grid';
 import AbrilText from '../AbrilText/AbrilText';
 import './featured-product.css';
 
-const FeaturedProduct = ({ product }) => (
+import { FeaturedProduct as FP } from '../../models';
+
+const FeaturedProduct: React.FC<{product: FP}> = ({ product }) => (
   <div className='featured-product'>
     <div className='featured-product-price'>
       {product.price}
