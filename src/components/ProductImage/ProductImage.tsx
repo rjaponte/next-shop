@@ -14,14 +14,14 @@
  * limitations under the License.
  */
 
+import React, { lazy, Fragment, Suspense } from 'react';
+import {Product} from '../../models';
+
 export declare var navigator: {
   connection: {
     effectiveType: string
   }
 };
-
-import React, { lazy, Fragment, Suspense } from 'react';
-import {Product} from '../../models';
 
 interface ProductImageProps {
   product: Product,
