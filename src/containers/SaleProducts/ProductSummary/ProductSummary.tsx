@@ -21,8 +21,14 @@ import ErrorOutline from '@material-ui/icons/ErrorOutline';
 import AddCart from '../../../components/AddCart/AddCart';
 import AbrilText from '../../../components/AbrilText/AbrilText';
 import './product-summary.css';
+import {Product} from '../../../models';
 
-const ProductSummary = ({ openDetailViewer, product }) => (
+interface ProductSummaryProps {
+  openDetailViewer: () => void,
+  product: Product
+}
+
+const ProductSummary = ({ openDetailViewer, product }: ProductSummaryProps) => (
   <div className='product-summary'>
     <div onClick={openDetailViewer} className='image-container'>
       <img src={product.imageUrl} alt={product.title} />

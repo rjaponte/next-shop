@@ -18,9 +18,16 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import Paper from '@material-ui/core/Paper';
 
+import {Product} from '../../../models';
+
 import './product-small-card.css';
 
-const ProductSmallCard = ({ category, product }) => (
+interface ProductSmallCardProps {
+  category: string,
+  product: Product
+}
+
+const ProductSmallCard = ({ category, product }: ProductSmallCardProps) => (
   <Link to={`/category/${category.toLowerCase()}/${product.id}`}>
     <Paper square elevation={0} className='product-small-card'>
       <img src={product.imageUrl} alt={product.title} />

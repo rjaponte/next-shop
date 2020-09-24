@@ -14,9 +14,9 @@
  * limitations under the License.
  */
 
-import { createStore, applyMiddleware, compose } from 'redux';
-import { createBrowserHistory } from 'history';
-import { routerMiddleware } from 'connected-react-router';
+import {createStore, applyMiddleware, compose, Middleware} from 'redux';
+import {createBrowserHistory} from 'history';
+import {routerMiddleware} from 'connected-react-router';
 
 import createRootReducer from './reducers';
 
@@ -27,10 +27,10 @@ const middleware = [
   routerMiddleware(history)
 ];
 
-const bindMiddleware = middleware => {
-  if(process.env.NODE_ENV !== 'production') {
-    const { composeWithDevTools } = require('redux-devtools-extension');
-    const { createLogger } = require('redux-logger');
+const bindMiddleware = (middleware: Middleware<any, any, any>[]) => {
+  if (process.env.NODE_ENV !== 'production') {
+    const {composeWithDevTools} = require('redux-devtools-extension');
+    const {createLogger} = require('redux-logger');
     return composeWithDevTools(
       compose(
         applyMiddleware(...middleware, createLogger({collapsed: true}))

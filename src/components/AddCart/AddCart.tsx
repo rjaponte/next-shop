@@ -24,8 +24,8 @@ import './add-cart.css';
 
 const AddCart = () => {
   const [quantity, setQuantity] = useState(1);
-  const quantityChangeHandler = event => {
-    setQuantity(event.target.value);
+  const quantityChangeHandler = (event: React.ChangeEvent<{value: unknown}>) => {
+    setQuantity(event.target.value as number);
   };
 
   return (
