@@ -15,6 +15,18 @@
  */
 
 import React, { lazy, Fragment, Suspense } from 'react';
+import {Product} from '../../models';
+
+export declare var navigator: {
+  connection: {
+    effectiveType: string
+  }
+};
+
+interface ProductImageProps {
+  product: Product,
+  close: () => void
+}
 
 const LazyAdaptiveProductImage = lazy(() => {
   return new Promise(resolve => {
@@ -36,7 +48,7 @@ const LazyAdaptiveProductImage = lazy(() => {
   );
 });
 
-const ProductImage = ({ ...rest }) => (
+const ProductImage = ({ ...rest }: ProductImageProps) => (
   <Suspense fallback={<Fragment>Loading...</Fragment>}>
     <LazyAdaptiveProductImage { ...rest } />
   </Suspense>

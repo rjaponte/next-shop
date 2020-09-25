@@ -35,8 +35,8 @@ interface SaleProductsParams {
 type SaleProductsProps = RouteComponentProps<SaleProductsParams>;
 
 const SaleProducts: React.FC<SaleProductsProps> = ({ match }) => {
-  const [selectedCategory, setSelectedCategory] = useState<Category>(null);
-  const [selectedProduct, setSelectedProduct] = useState<Product>(null);
+  const [selectedCategory, setSelectedCategory] = useState<Category | undefined>();
+  const [selectedProduct, setSelectedProduct] = useState<Product | undefined>();
   const [isProductImageOpen, setProductImageStatus] = useState(false);
 
   useEffect(() => {

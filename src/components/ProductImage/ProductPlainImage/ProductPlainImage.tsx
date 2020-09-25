@@ -17,8 +17,14 @@
 import React from 'react';
 
 import ProductImageWrapper from '../../../hoc/ProductImageWrapper/ProductImageWrapper';
+import {Product} from '../../../models';
 
-const ProductPlainImage = ({ product, close }) => (
+interface ProductPlainImageProps {
+  product: Product,
+  close: ()=> void
+}
+
+const ProductPlainImage = ({ product, close }: ProductPlainImageProps) => (
   <ProductImageWrapper title={product.title} close={close}>
     <img src={product.imageUrl} width={500} alt='product' />
   </ProductImageWrapper>

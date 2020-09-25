@@ -14,9 +14,11 @@
  * limitations under the License.
  */
 
-import { combineReducers } from 'redux';
-import { connectRouter } from 'connected-react-router';
+import {combineReducers} from 'redux';
+import {connectRouter} from 'connected-react-router';
 
-export default history => combineReducers({
+import {History} from 'history';
+
+export default (history: History<{}>) => combineReducers({
   router: connectRouter(history)
 });

@@ -14,16 +14,22 @@
  * limitations under the License.
  */
 
-import React from 'react';
+import React, {ReactNode} from 'react';
 import CloseIcon from '@material-ui/icons/Close';
 
 import AbrilText from '../../components/AbrilText/AbrilText';
 import './product-image-wrapper.css';
 
-const ProductImageWrapper = ({ children, title, close }) => (
+interface ProductImageWrapperProps {
+  children: ReactNode,
+  title: string,
+  close: () => void
+}
+
+const ProductImageWrapper = ({ children, title, close }:ProductImageWrapperProps) => (
   <div className='wrapper'>
     <div className='header'>
-      <AbrilText text={title} />
+      <AbrilText className="" text={title} />
       <CloseIcon className='close-icon' onClick={close} fontSize='large' />
     </div>
     <div>

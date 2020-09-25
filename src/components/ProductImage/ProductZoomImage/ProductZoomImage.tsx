@@ -18,8 +18,14 @@ import React from 'react';
 import Magnifier from 'react-magnifier';
 
 import ProductImageWrapper from '../../../hoc/ProductImageWrapper/ProductImageWrapper';
+import {Product} from '../../../models';
 
-const ProductZoomImage = ({ product, close }) => (
+interface ProductZoomImageProps {
+  product: Product,
+  close: () => void
+}
+
+const ProductZoomImage = ({ product, close }: ProductZoomImageProps) => (
   <ProductImageWrapper title={product.title} close={close}>
     <Magnifier src={product.imageUrl} width={500} />
   </ProductImageWrapper>
